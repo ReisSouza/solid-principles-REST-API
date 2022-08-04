@@ -11,11 +11,15 @@
     "eslint": "^7.32.0 || ^8.2.0",
     "express": "^4.18.1",
     "nodemailer": "^6.7.7",
+    "pg": "^8.7.3",
+    "pino": "^8.3.1",
+    "pino-pretty": "^8.1.0",
     "uuidv4": "^6.2.13"
   },
   "devDependencies": {
     "@types/express": "^4.17.13",
     "@types/nodemailer": "^6.4.4",
+    "@types/pg": "^8.6.5",
     "@typescript-eslint/eslint-plugin": "^5.31.0",
     "@typescript-eslint/parser": "^5.31.0",
     "eslint-config-airbnb-base": "^15.0.0",
