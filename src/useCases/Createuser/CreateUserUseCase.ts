@@ -1,6 +1,7 @@
 import { User } from '../../entities/User';
 import { IMailProvider } from '../../providers/IMailProvider';
 import { IUsersRepository } from '../../repositories/IUserRepository';
+import { bcriptCreateHash } from '../../util/configBcript/configBcript';
 import { ICreateUserRequestDTO } from './CreateUserDTO';
 
 export class CreateUserUseCase {
@@ -14,7 +15,12 @@ export class CreateUserUseCase {
     if (userAlreadyExists) {
       throw new Error(`User ${data.email} already exists`);
     }
-    const user = new User(data);
+    const hashPassword = bcriptCreateHash({ value: data.password });
+    const newUser = {
+      ...data,
+      password: hashPassword,
+    };
+    const user = new User(newUser);
     await this.userRepository.save(user);
 
     this.mailProvider.sendEmail({
